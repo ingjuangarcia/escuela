@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script>
+        
+            function buscarmateria(){
+                fetch("/materia.php")
+                .then( res => res.json())
+                .then( res => {
+                    var listaId = document.getElementById('list_Id')
+                    var temp = '';
+                    res.forEach(m => {
+
+                        temp = temp +'<tr>'+'<td>'+m.id+'</td>' + '<td>'+m.nombre+'</td>' + '<td>'+m.credito+'</td>'+'</tr>' 
+                        listaId.innerHTML = temp;
+                    });
+                   
+                })
+                .catch( err => {
+                    console.log(err);
+                });
+            }
+
+        </script>
+    </head>
+
+    <body >
+       
+
+        <button onclick="buscarmateria()">Buscar Materias</button>
+
+
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th colspan="3">LISTA DE MATERIAS</th>
+                </tr>
+
+                <tr>
+                    <td><b>Id</b></td>
+                    <td><b>Nombre</b></td>
+                    <td>Creditos</td>
+                </tr>
+
+            </thead>
+            <tbody id="list_Id">
+                
+            </tbody>
+        </table>
+        <!-- <ul id="list_materia">
+        </ul> -->
+    </body>
+</html>

@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <title>Formulario Materia</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            
+            *{
+             
+                    margin: 0;
+                    padding: 0;
+            }
+                body{
+            padding: 50px;
+                        font-size: 24px;
+        }
+        
+        p{
+            font-size: 20px;
+                        padding: 20px
+                     
+        }
+        h3,h2{
+            color: blue;
+                }
+                    
+        #header {
+                margin:auto;
+                width:auto;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+                        
+               
+
+                     float: left;
+                     height: 25px;
+                     padding: 0 25px;
+                     color: #CC6600;
+                     font: bold 18px/25px Arial, Helvetica;
+                     text-decoration: none;
+                     text-shadow: 0 1px 0 #000; }
+
+                         #menu li:hover > a{
+                     color: #CC3333; } 
+
+                     #menu ul{
+                     list-style: none;
+                     margin: 0;
+                     padding: 0;    
+                     display: none;
+                     position: absolute;
+                     top: 35px;
+                     left: 0;
+                     background: #255; }
+
+                    #menu li:hover > ul{
+                     display: block; }
+                    
+                    #menu li ul li ul {
+                right:-440px;
+                top:0px;
+            }
+                        
+                                 
+                  
+                  
+        </style>
+        <head>
+                <script>
+               
+                    function guardarmateria(){
+                         fetch("/materia.php")
+                         .then( res => res.json())
+                         .then( res => {
+                    var listaId = document.getElementById('formsolicitud')
+                    var temp = '';
+                    res.forEach(m => {
+
+                       // temp = temp +'<tr>'+'<td>'+m.id+'</td>' + '<td>'+m.nombre+'</td>' + '<td>'+m.credito+'</td>'+'</tr>' 
+                        formsolicitud.innerHTML = temp;
+                    });
+                   
+                })
+                .catch( err => {
+                    console.log(err);
+                });
+
+         }
+        
+                </script>
+            </head>
+    </head>
+    <body>
+        
+    
+        </div>
+          
+           
+            <br><br/>
+           
+            <form id="formsolicitud" name="formsolicitud" action="/materia.php" method="post">
+            <h1>Formulario de Materia</h1>
+             <div style="height:15%; width:100%; background:lightcyan">
+             <fieldset>
+                 
+                <label><strong>Codigo de materia</strong></label>
+                <input type="text" id="id" name="id" />
+                <br>
+                <label><strong>Nombre Materia</strong></label>                
+                <input type="text" id="nombre" name="nombre" /> 
+                <br>
+                <label><strong>Crédito</strong></label>                
+                <input type="text" id="credito" name="credito" /> 
+                <br>
+            </div>
+                           
+              
+            </fieldset>
+        <br/>  
+        <input type="submit" value="enviar" />
+        <input type="reset" name="limpiar" value="Borrar datos del formulario" />
+         </div>
+        </form>
+                
+                </body>
+</html>
